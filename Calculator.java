@@ -1,4 +1,3 @@
-package application;
 
 
 public interface Calculator {
