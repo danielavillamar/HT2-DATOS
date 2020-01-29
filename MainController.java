@@ -1,4 +1,4 @@
-
+package application;
 
 import java.io.File;
 import java.util.Scanner;
@@ -21,7 +21,7 @@ public class MainController {
 	@FXML	
 	private FlowPane resultFlowPane;
 	
-	//Implementacion Stack /
+	//Implementacion Stack 
 	private Stack<Integer> stack;
 	//objeto de la clase que implementa Calculator
 	private Calculator calculator;
@@ -30,32 +30,30 @@ public class MainController {
 	
 	// Acción para leer archivo txt
 	public void read() {
-		//Si ya se verifico y no hay error se lee el archivo
+		// Verificación de errores y si no hay ningun error o algo que le impida seguir puede leer el archivo.
 		if(verifyPath()) {
-			//Se recorre todo el archivo
+			//Revision total del archivo.
 			String line = "";
 			while (s.hasNextLine()) {
 				line = s.nextLine()+ " ";
-				//Se hace un arreglo de strings
+				// Arreglo strings
 				String[] text = line.split(" ");
-				//Se recorre la linea del archivo txt
+				// Revisión linea archivo txt a utilizar
 				for (int i = 0; i < text.length; i++) {
 					String value = text[i];
-					//Se guarda el valor en el stack
+					// Guarda valor en Stack
 					try {
-						//Se intenta convertir a int
+						// Prueba conversion int
 						Integer intValue = Integer.parseInt(value);
 						stack.push(intValue);
 					} catch (Exception e) {
-						// TODO: handle exception
-						//Si no es int es un operando entonces ya se puede efectuar la operacion
-						//Se sacan la operacion y los dos operandos
+						// Si no es = int es operando, se efectua la operacion. Agarra la operación y sus ambos operandos
 						String operacion = value;
 						int operando2 = stack.pop();
 						int operando1 = stack.pop();
-						//Se hace la operacion
+						// Proceso de operación
 						int resultado = calculator.Calculate(operando1, operando2, operacion);
-						//Se guarda el resultado en la primera posicion del stack
+						//Guarda resultado en primera linea del stack
 						stack.push(resultado);
 					}
 				}
@@ -65,7 +63,7 @@ public class MainController {
 				Line linee = new Line(0, 0, 350, 0);
 				Region p1 = new Region();
 				p1.setPrefSize(347.0, 4.0);
-				//Se agregan al FlowPane
+				//Flowplane
 				resultFlowPane.getChildren().add(label);
 				resultFlowPane.getChildren().add(p);
 				resultFlowPane.getChildren().add(linee);
@@ -74,17 +72,13 @@ public class MainController {
 		}
 	}
 	
-	/**
-	 * Verifica que el path sea correcto 
-	 * @return boolean = si se pudo abrir el path
-	 */
+	//Verificacion path = correcto
 	public boolean verifyPath() {
 		try {
-			//Se lee el archivo
+			//Leer archivo
 			s = new Scanner(new File(pathTextField.getText()));
 			return true;
 		} catch (Exception e) {
-			// TODO: handle exception
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error");
 			alert.setHeaderText("Error en datos ingresado");
