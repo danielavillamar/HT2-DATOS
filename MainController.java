@@ -21,22 +21,14 @@ public class MainController {
 	@FXML	
 	private FlowPane resultFlowPane;
 	
-	/**
-	 * Objeto de la clase que implementa Stack 
-	 */
+	//Implementacion Stack /
 	private Stack<Integer> stack;
-	/**
-	 * objeto de la clase que implementa Calculator
-	 */
+	//objeto de la clase que implementa Calculator
 	private Calculator calculator;
-	/**
-	 * Es en donde se almacena la informacion leida en el archivo txt
-	 */
+	// Se almacena la informacion leida en el archivo txt
 	private Scanner s;
 	
-	/**
-	 *	lee el archivo txt 
-	 */
+	// Acción para leer archivo txt
 	public void read() {
 		//Si ya se verifico y no hay error se lee el archivo
 		if(verifyPath()) {
