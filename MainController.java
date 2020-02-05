@@ -90,7 +90,7 @@ public class MainController {
 	
 	@FXML
     public void initialize() {
-		stack = new StackImp();
+		stack = new Stack();
 		calculator = new ImpCalculadora();
     }
 	
